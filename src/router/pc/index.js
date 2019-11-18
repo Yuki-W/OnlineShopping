@@ -3,6 +3,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '../../components/pc/HelloWord'
 
+// 引入 全局清零文件
+import '../../assets/style/init.css'
+
 Vue.use(Router)
 
 let router = new Router({
