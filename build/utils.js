@@ -42,6 +42,8 @@ exports.cssLoaders = function (options) {
       })
     }
 
+    
+
     // Extract CSS when that option is specified
     // (which is the case during production build)
     if (options.extract) {
@@ -54,13 +56,43 @@ exports.cssLoaders = function (options) {
     }
   }
 
+
+  /**
+     * 解决scss全局引入问题，添加下列函数
+     */
+    function generateSassResourceLoader () {
+      var loaders = [
+          cssLoader,
+          'sass-loader',
+          {
+              loader: 'sass-resources-loader',
+              options: {
+                  resources: [
+                      path.resolve(__dirname, '../src/assets/style/global.scss'),
+                  ]
+              }
+          }
+      ]
+      if (options.extract) {
+          return ExtractTextPlugin.extract({
+              use: loaders,
+              fallback: 'vue-style-loader'
+          })
+      } else {
+          return ['vue-style-loader'].concat(loaders)
+      }
+    }
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
+    // sass: generateLoaders('sass', { indentedSyntax: true }),
+    // scss: generateLoaders('sass'),
+    // 修改如下
+    sass: generateSassResourceLoader(),
+    scss: generateSassResourceLoader(),
+
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }
@@ -143,10 +175,6 @@ exports.htmlPlugin = function () {
  * 结束添加
  * @returns {Function}
  */
-
-
-
-
 
 exports.createNotifierCallback = () => {
   const notifier = require('node-notifier')

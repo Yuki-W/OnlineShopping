@@ -1,12 +1,29 @@
+// {
+//   "presets": [
+//     ["env", {
+//       "modules": false,
+//       "targets": {
+//         "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+//       }
+//     }],
+//     "stage-2"
+//   ],
+//   "plugins": ["transform-vue-jsx", "transform-runtime"]
+// }
+
+/**
+  *解决export 'default' (imported as '相关函数') was not found问题
+*/
 {
   "presets": [
-    ["env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-      }
-    }],
-    "stage-2"
+      [
+          "env",
+          {
+              "modules": false
+          }
+      ]
   ],
-  "plugins": ["transform-vue-jsx", "transform-runtime"]
+  "plugins": [
+      "syntax-dynamic-import"
+  ]
 }

@@ -48,7 +48,7 @@ export default {
   computed: {},
   //监控data中的数据变化
   watch: {
-      selected:function(val,oldVal) {   //跳转到对应的路由组件
+      selected:function(val,oldVal) {   //tabbar跳转到对应的路由组件
         //   console.log(val+"---"+ oldVal);
         switch (val) {  
             case "home":
@@ -80,5 +80,9 @@ export default {
 </script>
 <style lang="scss">
 @charset "utf-8";
-
+.mint-tabbar{
+  .mint-tab-item-label{
+    color: #797979;
+  }
+}
 </style>
