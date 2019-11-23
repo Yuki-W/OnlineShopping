@@ -81,6 +81,7 @@ export default {
 <style lang="scss">
 @charset "utf-8";
 .mint-tabbar{
+  z-index: 99;
   .mint-tab-item-label{
     color: #797979;
   }

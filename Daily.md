@@ -42,3 +42,9 @@ import '../lib/mui/css/mui.min.css'
 1、安装mock.js  ```npm install mockjs --save-dev```
 2、安装 HTTP库 axios  ```cnpm install axios --save ```
 3、创建Mock JS文件夹，里面放置Mock.js数据文件
+
+# 2019年11月20日
+## 抽离 tabbar组件，使 搜索组件复用
+1、使用import引入封装的组件
+2、在components里面注册该组件
+3、页面中通过注册的组件名来使用该组件

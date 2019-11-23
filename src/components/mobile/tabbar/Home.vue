@@ -1,12 +1,14 @@
 <!-- 首页 路由 -->
 <template>
   <div class="home">
-    <!-- 顶部 Header 区域 -->
+    
+
+<div class="mui-scroll-wrapper">
+	<div class="mui-scroll" style="padding-top: 55px;">
+		<!-- 顶部 Header 区域 -->
     <div class="m_topBar">
       <div class="m_logo">小米</div>
-      <div class="mui-input-row mui-search">
-        <input type="search" class="mui-input-clear" placeholder="小米 CC9 Pro" />
-      </div>
+      <search></search>
       <div class="m_login">登录</div>
     </div>
 
@@ -103,51 +105,27 @@
         class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted"
       >
         <div class="mui-scroll">
-          <a
-            class="mui-control-item mui-active"
-            href="#item1mobile"
-            data-wid="tab-top-subpage-1.html"
-          >
+          <a class="mui-control-item mui-active">
             <h2>推荐</h2>
             <p>为你推荐</p>
           </a>
-          <a
-            class="mui-control-item"
-            href="#item1mobile"
-            data-wid="tab-top-subpage-1.html"
-          >
+          <a class="mui-control-item">
             <h2>推荐</h2>
             <p>为你推荐</p>
           </a>
-          <a
-            class="mui-control-item"
-            href="#item1mobile"
-            data-wid="tab-top-subpage-1.html"
-          >
+          <a class="mui-control-item">
             <h2>推荐</h2>
             <p>为你推荐</p>
           </a>
-          <a
-            class="mui-control-item"
-            href="#item1mobile"
-            data-wid="tab-top-subpage-1.html"
-          >
+          <a class="mui-control-item" href="#item1mobile" data-wid="tab-top-subpage-1.html">
             <h2>推荐</h2>
             <p>为你推荐</p>
           </a>
-          <a
-            class="mui-control-item"
-            href="#item1mobile"
-            data-wid="tab-top-subpage-1.html"
-          >
+          <a class="mui-control-item" href="#item1mobile" data-wid="tab-top-subpage-1.html">
             <h2>推荐</h2>
             <p>为你推荐</p>
           </a>
-          <a
-            class="mui-control-item"
-            href="#item1mobile"
-            data-wid="tab-top-subpage-1.html"
-          >
+          <a class="mui-control-item" href="#item1mobile" data-wid="tab-top-subpage-1.html">
             <h2>推荐</h2>
             <p>为你推荐</p>
           </a>
@@ -156,16 +134,27 @@
     </div>
 
     <!-- 滑动标题列表对应项 路由区域 -->
+    
+    <cardPic></cardPic>
+
+    </div>
+</div>
   </div>
 </template>
 
 <script>
 // 导入 MUI 的JS文件
 import mui from "../../../lib/mui/js/mui";
+// 引入 我们自己抽离的搜索组件
+import search from "../subComponents/Search";
+import cardPic from '../subComponents/subChoice'
 
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: {},
+  components: {
+    search,
+    cardPic
+  },
   data() {
     //这里存放数据
     return {};
@@ -182,12 +171,12 @@ export default {
   mounted() {
     // 初始化滑动控件
     mui(".mui-scroll-wrapper").scroll({
-      deceleration: 0.0005 
+      deceleration: 0.0005
     });
   }
 };
 </script>
-<style lang='scss' scoped>
+<style lang='scss'>
 %common-block {
   /* 公共占位块样式，以后的类可以继承它的样式 */
   width: 50px;
@@ -206,19 +195,23 @@ export default {
   .m_logo {
     @extend %common-block;
   }
-  .mui-input-clear {
-    margin-bottom: 0;
-    border-radius: 28px;
-    text-align: left;
-    background: {
-      color: #fff;
-      image: url(../../../assets/images/search.png);
-      repeat: no-repeat;
-      position: 10px 9px;
-    }
-  }
   .m_login {
     @extend %common-block;
+  }
+
+  /* 搜索框样式 */
+  .search {
+    display: $myDisplay;
+    justify-content: space-around;
+    align-items: $myAlignCenter;
+    .sub-search {
+      margin-right: 20px;
+      .mui-input-clear {
+        margin-bottom: 0;
+        background-color: #fff;
+        border-radius: 20px;
+      }
+    }
   }
 }
 
@@ -291,17 +284,16 @@ export default {
     padding: 5px;
     border-radius: 10px;
   }
-  
 }
-.mui-active{
-  h2{
-    color: #ffae00ba!important;
+.mui-active {
+  h2 {
+    color: #ffae00ba !important;
   }
-    p{
-      background-color: #ffae00ba;
-      color:white!important;
-    }
+  p {
+    background-color: #ffae00ba;
+    color: white !important;
   }
+}
 #sliderSegmentedControl {
   height: 55px;
   .mui-scroll {
